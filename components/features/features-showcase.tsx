@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Map, Grid3X3, Search } from "lucide-react"
+import Image from 'next/image'
 
 const mainFeatures = [
   {
@@ -11,14 +12,14 @@ const mainFeatures = [
     title: "플레이스 순위 조회",
     description:
       "지역별, 업종별 매장의 순위를 실시간으로 조회하고 경쟁 업체와의 비교 분석을 통해 시장 내 위치를 파악합니다.",
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/images/features/place-ranking.png",
     color: "from-emerald-500/20 via-emerald-500/10 to-transparent",
   },
   {
     icon: <Grid3X3 className="h-12 w-12 text-warning" />,
     title: "우선순위 매트릭스",
     description: "중요도와 긴급성을 기준으로 재무 의사결정의 우선순위를 시각화하여 효율적인 자원 배분을 지원합니다.",
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/images/features/priority-matrix.png",
     color: "from-amber-500/20 via-amber-500/10 to-transparent",
   },
   {
@@ -26,7 +27,7 @@ const mainFeatures = [
     title: "키워드-매출 인사이트",
     description:
       "검색 키워드와 매출 데이터의 상관관계를 분석하여 마케팅 전략 수립 및 수요 예측에 활용할 수 있는 인사이트를 제공합니다.",
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/images/features/keyword-insight.png",
     color: "from-blue-500/20 via-blue-500/10 to-transparent",
   },
 ]
@@ -132,10 +133,13 @@ export default function FeaturesShowcase() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} rounded-xl -z-10`}></div>
                 <Card className="overflow-hidden border-gray-800 bg-gray-900/50">
                   <CardContent className="p-1">
-                    <img
-                      src={feature.image || "/placeholder.svg"}
+                    <Image
+                      src={feature.image}
                       alt={feature.title}
-                      className="w-full h-auto rounded"
+                      width={600}
+                      height={600}
+                      className="w-full h-auto rounded object-contain"
+                      priority
                     />
                   </CardContent>
                 </Card>
